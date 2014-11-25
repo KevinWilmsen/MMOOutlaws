@@ -63,6 +63,10 @@ public class MMOScoreBoard{
 		return this;
 	}
 	
+	public MMOScoreBoard changeColor(){
+		throw new RuntimeException();
+	}
+	
 	public MMOScoreBoard clearStatistics(){
 		if(oldArray != null){
 			for(int i=0; i<oldArray.length; i++){
