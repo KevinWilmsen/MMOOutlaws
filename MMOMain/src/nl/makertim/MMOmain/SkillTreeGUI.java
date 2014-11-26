@@ -19,7 +19,7 @@ public class SkillTreeGUI extends IconMenu{
 	private PlayerStats pls;
 	
 	public SkillTreeGUI(PlayerStats pls){
-		super("Skill Tree", 5, Refrence.main);		
+		super(Lang.skillTreeMainMenuTitle, 5, Refrence.main);		
 		this.pls = pls;
 		this.open(pls.getPlayer());
 	}
@@ -44,7 +44,7 @@ public class SkillTreeGUI extends IconMenu{
 	}
 	
 	private void instance(){
-		this.addItem(new ItemHandler(0, "Main Menu", null, new ItemStack(Material.NAME_TAG), true){ 
+		this.addItem(new ItemHandler(0, Lang.itemMenu, null, new ItemStack(Material.NAME_TAG), true){ 
 			@Override 
 			public void onClick(InventoryClickEvent e, IconMenu ic){ 
 				Bukkit.getScheduler().runTaskLater(Refrence.main, new Runnable(){
@@ -62,13 +62,13 @@ public class SkillTreeGUI extends IconMenu{
 		});
 		addCurrent();
 		addResset();
-		this.addOption(new ItemOption(9, "Movement Skills", null, new ItemStack(Material.FEATHER)));
+		this.addOption(new ItemOption(9, Lang.skillTreeMovementMenuTitle, null, new ItemStack(Material.FEATHER)));
 		Movement();
-		this.addOption(new ItemOption(18, "Combat Skills", null, new ItemStack(Material.IRON_SWORD)));
+		this.addOption(new ItemOption(18, Lang.skillTreeCombatMenuTitle, null, new ItemStack(Material.IRON_SWORD)));
 		Combat();
-		this.addOption(new ItemOption(27, "Stealth Skills", null, new ItemStack(Material.LEATHER_BOOTS)));
+		this.addOption(new ItemOption(27, Lang.skillTreeStealthMenuTitle, null, new ItemStack(Material.LEATHER_BOOTS)));
 		Stealth();
-		this.addOption(new ItemOption(36, "Utility Skills", null, new ItemStack(Material.TNT)));
+		this.addOption(new ItemOption(36, Lang.skillTreeUtilityMenuTitle, null, new ItemStack(Material.TNT)));
 		Utility();
 	}
 	
@@ -119,12 +119,12 @@ public class SkillTreeGUI extends IconMenu{
 	private void addCurrent(){
 		this.addOption(new ItemOption(
 				8,
-				"Skill Points", 
+				Lang.skillPoints, 
 				arrayToList(new String[]{
 						"", 
-						ChatColor.GREEN + "Available Levels : " + pls.theTree.getAvalibleLVL(),
-						ChatColor.GOLD + "Total Level : " + pls.theTree.getTotalLVL(),
-						ChatColor.YELLOW + "Max Level : 50"}), 
+						ChatColor.GREEN + Lang.availableLevels + " : " + pls.theTree.getAvalibleLVL(),
+						ChatColor.GOLD + Lang.totalLevels + " : " + pls.theTree.getTotalLVL(),
+						ChatColor.YELLOW + Lang.maxLevels + " : 50"}), 
 				new ItemStack(Material.EMERALD, pls.theTree.getAvalibleLVL()<0?1:pls.theTree.getAvalibleLVL())
 				)
 		);
@@ -133,10 +133,10 @@ public class SkillTreeGUI extends IconMenu{
 	private void addResset(){
 		this.addItem(new ItemHandler(
 				4,
-				"Reset Skills", 
+				Lang.itemSkillReset, 
 				arrayToList(new String[]{
 						"", 
-						ChatColor.RED + "You will get your levels back"}), 
+						ChatColor.RED + Lang.descSkillReset}), 
 				new ItemStack(Material.SULPHUR), 
 				false)
 		{	
@@ -210,14 +210,15 @@ public class SkillTreeGUI extends IconMenu{
 			boolean nextSkill = mySkill.nextSkill(skill);
 			if(hasSkill){
 				lst.add(0, "");
-				lst.add(1, ChatColor.BOLD + "" + ChatColor.GREEN + "Got Skill");
+				lst.add(1, ChatColor.BOLD.toString() + ChatColor.GREEN + Lang.skillGot);
 			}else if(nextSkill){
 				lst.add(0, "");
-				lst.add(1, ChatColor.YELLOW + "Click to unlock");
-				lst.add(2, ChatColor.GRAY + "Cost : " + skill.skillCosts + " Skill Point" + (skill.skillCosts>1?"s":""));
+				lst.add(1, ChatColor.YELLOW + Lang.descUnlock);
+				lst.add(2, ChatColor.GRAY + Lang.cost + " : " + skill.skillCosts + " " + 
+							Lang.skillPoints.substring(0, Lang.skillPoints.length() - (skill.skillCosts>1?0:1)));
 			}else{
 				lst.add(0, "");
-				lst.add(1, ChatColor.DARK_GRAY + "You need to unlock other skills first");
+				lst.add(1, ChatColor.DARK_GRAY + Lang.skillNotFirst);
 			}
 			
 			return lst;
@@ -240,7 +241,7 @@ public class SkillTreeGUI extends IconMenu{
 			}
 			boolean hasSkill = mySkill.hasSkill(skill);
 			boolean nextSkill = mySkill.nextSkill(skill);
-			String title = hasSkill?"Got it":nextSkill?"Next skill":"Locked";
+			String title = hasSkill?"Got it":nextSkill?Lang.skillNext:Lang.skillLocked;
 			short extra = (short)(hasSkill?13:nextSkill?1:7);
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(title);
@@ -255,7 +256,7 @@ public class SkillTreeGUI extends IconMenu{
 			switch(message){
 			case 1:
 				Player pl = thePlayer.getPlayer();
-				pl.sendMessage(String.format("%s Unlocked.", theSkill.name));
+				pl.sendMessage(String.format("%s %s.", theSkill.name, Lang.unlocked));
 				PlayerStats.getPlayerStats(pl).save();
 				pl.playSound(pl.getLocation(), Sound.NOTE_PLING, 1F, 2F);
 				Bukkit.getScheduler().runTaskLater(Refrence.main, new Runnable(){

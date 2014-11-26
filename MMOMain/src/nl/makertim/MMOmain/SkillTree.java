@@ -50,7 +50,7 @@ public class SkillTree{
 		return totalLevel;
 	}
 	
-	/** @return * 0 = ERROR. * 1 = OK. * 2 = Level Incorrect. * 3 = Index Incorrect. */
+	/** @return * 0 = ERROR. * 1 = OK. * 2 = Level Incorrect. * 3 = Already Unlocked. */
 	public int buyNewSkill(Skill newSkill){
 		Skill oldSkill = null;
 		if(newSkill instanceof Movement){
@@ -64,6 +64,8 @@ public class SkillTree{
 		}
 		if(oldSkill == null){
 			return 0;
+		}else if(oldSkill.hasSkill(newSkill)){
+			return 3;
 		}else if(oldSkill.skillIndex + 1 == newSkill.skillIndex){
 			if(availableLevels >= newSkill.skillCosts){
 				availableLevels -= newSkill.skillCosts;
