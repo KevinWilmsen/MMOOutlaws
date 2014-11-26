@@ -52,6 +52,14 @@ public class MMOOutlaws{
 		}
 	}
 	
+	public void addSkillHandler(Class<? extends SkillHandler> skillHandler){
+		try{
+			Refrence.handlers.add(skillHandler.newInstance());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	public static void sendActionMessage(Player pl, String message){
 		//1.8 only
 		int protocol = -1;
