@@ -58,7 +58,7 @@ public class Skill{
 			switch(index){
 			case 1:
 				return hayNodamage;
-			case 2: 
+			case 2:
 				return zipLine;
 			case 3:
 				return crouchNodamage;

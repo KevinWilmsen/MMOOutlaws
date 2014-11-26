@@ -8,8 +8,10 @@ import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.Team;
 
 public class MMOScoreBoard{
+	private Team redTeam, blueTeam;
 	public Scoreboard theBoard = Bukkit.getScoreboardManager().getNewScoreboard();
 	private Objective obj;
 	private String[] oldArray;
@@ -63,10 +65,6 @@ public class MMOScoreBoard{
 		return this;
 	}
 	
-	public MMOScoreBoard changeColor(){
-		throw new RuntimeException();
-	}
-	
 	public MMOScoreBoard clearStatistics(){
 		if(oldArray != null){
 			for(int i=0; i<oldArray.length; i++){
@@ -87,5 +85,24 @@ public class MMOScoreBoard{
 		pl.setScoreboard(Bukkit.getScoreboardManager().getNewScoreboard());
 	}
 	
-	
+	public MMOScoreBoard setTeam(Boolean isRed, Player pl){
+		redTeam = theBoard.getTeam("MMOred");
+		blueTeam = theBoard.getTeam("MMOblue");
+		if(redTeam == null){
+			redTeam = theBoard.registerNewTeam("MMOred");
+			redTeam.setPrefix("TEST_");
+		}else if(blueTeam == null){
+			blueTeam = theBoard.registerNewTeam("MMOblue");
+			blueTeam.setPrefix("TEST_");
+		}
+		if(isRed == null){
+			blueTeam.removePlayer(pl);
+			redTeam.removePlayer(pl);
+		}else if(isRed){
+			redTeam.addPlayer(pl);
+		}else{
+			blueTeam.addPlayer(pl);
+		}
+		return this;
+	}
 }

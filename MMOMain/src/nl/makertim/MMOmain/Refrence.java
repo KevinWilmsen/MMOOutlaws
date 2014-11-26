@@ -7,6 +7,7 @@ import java.util.Random;
 
 import nl.makertim.MMOmain.command.Command;
 import nl.makertim.MMOmain.lib.Mission;
+import nl.makertim.MMOmain.lib.SkillHandler;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -28,6 +29,7 @@ public class Refrence{
 	private static GameWorld world;
 	public static World theWorld;
 	public static ArrayList<Class<? extends Mission>> missionTypes = new ArrayList<Class<? extends Mission>>();
+	public static ArrayList<SkillHandler> handlers = new ArrayList<SkillHandler>();
 	public static ArrayList<Command> commands = new ArrayList<Command>();
 	public static GameWorld getWorld(){
 		if(world==null){

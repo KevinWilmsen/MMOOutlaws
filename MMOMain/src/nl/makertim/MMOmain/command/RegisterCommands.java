@@ -1,7 +1,6 @@
 package nl.makertim.MMOmain.command;
 
 import nl.makertim.MMOmain.MKTEventHandler;
-import nl.makertim.MMOmain.MainMenuGUI;
 import nl.makertim.MMOmain.PlayerStats;
 import nl.makertim.MMOmain.Refrence;
 import nl.makertim.MMOmain.GameWorld;
@@ -13,10 +12,10 @@ import org.bukkit.entity.Player;
 public class RegisterCommands{
 	
 	public RegisterCommands(){
-		registerCommand(new Command("MainMenu"){
+		registerCommand(new Command("Test"){
 			@Override
 			public void onCommand(Player sender, String command, String[] args) {
-				new MainMenuGUI().open(sender);
+				PlayerStats.getPlayerStats(sender).getScoreBoard().setTeam(Refrence.random.nextBoolean(), sender);
 			}
 		});
 		registerCommand(new Command("ReJoin"){
