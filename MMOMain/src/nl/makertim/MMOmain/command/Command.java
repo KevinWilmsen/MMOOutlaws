@@ -9,6 +9,6 @@ public abstract class Command {
 		commandName = name;
 	}
 	
-	public abstract void onCommand(Player sender, String command, String[] args);
+	public abstract boolean onCommand(Player sender, String command, String[] args);
 	
 }

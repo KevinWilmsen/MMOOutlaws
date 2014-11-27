@@ -20,8 +20,7 @@ public class CommandHandler {
 		boolean b = false;
 		for(Command cmd : Refrence.commands){
 			if(cmd.commandName.equalsIgnoreCase(command)){
-				cmd.onCommand(cmdSender, command, args);
-				b = true;
+				b = cmd.onCommand(cmdSender, command, args);
 			}
 		}
 		return b;

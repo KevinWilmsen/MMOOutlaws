@@ -15,73 +15,88 @@ public class RegisterCommands{
 	public RegisterCommands(){
 		registerCommand(new Command(Lang.commandTest){
 			@Override
-			public void onCommand(Player sender, String command, String[] args){
-				sender.sendMessage("No Test Found Exception");
-				PlayerStats.getPlayerStats(sender).getScoreBoard().setTeam(Refrence.random.nextBoolean(), sender);
+			public boolean onCommand(Player sender, String command, String[] args){
+				if(MMOOutlaws.isAdmin(sender)){
+					sender.sendMessage("No Test Found Exception");
+					return true;
+				}
+				return false;
 			}
 		});
 		registerCommand(new Command(Lang.commandInv){
 			@Override
-			public void onCommand(Player sender, String command, String[] args) {
+			public boolean onCommand(Player sender, String command, String[] args) {
 				if(MMOOutlaws.isAdmin(sender) && Mission.getMissionFromPlayer(sender)==null){
 					sender.sendMessage("Cleand up your inventory!");
 					MKTEventHandler.cleanupPlayerInventory(sender);
+					return true;
 				}
+				return false;
 			}
 		});
 		registerCommand(new Command(Lang.commandStats){
 			@Override
-			public void onCommand(Player sender, String command, String[] args) {
+			public boolean onCommand(Player sender, String command, String[] args) {
 				if(MMOOutlaws.isAdmin(sender)){
 					PlayerStats pls = PlayerStats.getPlayerStats(sender);
 					pls.xp = 0;
 					pls.theTree.Reset();
 					pls.resetScoreBoard();
+					return true;
 				}
+				return false;
 			}
 		});
 		registerCommand(new Command(Lang.commandBoard){
 			@Override
-			public void onCommand(Player sender, String command, String[] args) {
+			public boolean onCommand(Player sender, String command, String[] args) {
 				PlayerStats.getPlayerStats(sender).resetScoreBoard();
+				return true;
 			}
 		});
 		registerCommand(new Command(Lang.commandMission){
 			@Override
-			public void onCommand(Player sender, String command, String[] args) {
+			public boolean onCommand(Player sender, String command, String[] args) {
 				Mission ms = GameWorld.getGameWorld().getMissionPlayer(sender);
 				if(ms != null){
 					sender.sendMessage(ms.toString());
+					return true;
 				}
+				return false;
 			}
 		});
 		registerCommand(new Command(Lang.commandPLStats){
 			@Override
-			public void onCommand(Player sender, String command, String[] args) {
+			public boolean onCommand(Player sender, String command, String[] args) {
 				if(MMOOutlaws.isAdmin(sender)){
 					sender.sendMessage(PlayerStats.getPlayerStats(sender).toString());
+					return true;
 				}
+				return false;
 			}
 		});
 		registerCommand(new Command(Lang.commandLVL){
 			@Override
-			public void onCommand(Player sender, String command, String[] args){
+			public boolean onCommand(Player sender, String command, String[] args){
 				if(MMOOutlaws.isAdmin(sender)){
 					PlayerStats pls = PlayerStats.getPlayerStats(sender);
 					pls.theTree.addLevel();
 					sender.sendMessage("Level added! Level " + pls.theTree.getTotalLVL());
 					pls.save();
+					return true;
 				}
+				return false;
 			}
 		});
 		registerCommand(new Command(Lang.commandVersion){
 			@Override
-			public void onCommand(Player sender, String command, String[] args){
+			public boolean onCommand(Player sender, String command, String[] args){
 				sender.sendMessage("Name    - " + Refrence.main.getName());
 				sender.sendMessage("Version - " + Refrence.main.getDescription().getVersion());
 				sender.sendMessage("Plugin Made By - MakerTim");
 				sender.sendMessage(" ");
 				sender.sendMessage("Concept Made By - iJordiii");
+				return true;
 			}
 		});
 	}
