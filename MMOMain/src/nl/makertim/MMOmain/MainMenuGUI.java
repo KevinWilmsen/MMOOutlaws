@@ -15,27 +15,27 @@ import nl.makertim.MMOmain.lib.MMOOutlaws;
 public class MainMenuGUI extends IconMenu{
 
 	public MainMenuGUI(){
-		super("Main Menu", 1, Refrence.main);
+		super(Lang.itemMenu, 1, Refrence.main);
 		
-		this.addItem(new ItemHandler(0, "Choose the darkside", null, new ItemStack(Material.SULPHUR), true){
+		this.addItem(new ItemHandler(0, Lang.descOutlaw, null, new ItemStack(Material.SULPHUR), true){
 			@Override
 			public void onClick(InventoryClickEvent e, IconMenu ic){
 				PlayerStats pls = PlayerStats.getPlayerStats((Player)e.getWhoClicked());
 				pls.isOutlaw = true;
-				MMOOutlaws.sendActionMessage(pls.getPlayer(), ChatColor.GOLD + "You Joined the Outlaws");
+				MMOOutlaws.sendActionMessage(pls.getPlayer(), ChatColor.GOLD + Lang.joinOutlaw);
 				pls.save();
 			}
 		});
-		this.addItem(new ItemHandler(1, "Be a starr", null, new ItemStack(Material.GLOWSTONE_DUST), true){
+		this.addItem(new ItemHandler(1, Lang.descSheriff, null, new ItemStack(Material.GLOWSTONE_DUST), true){
 			@Override
 			public void onClick(InventoryClickEvent e, IconMenu ic){
 				PlayerStats pls = PlayerStats.getPlayerStats((Player)e.getWhoClicked());
 				pls.isOutlaw = false;
-				MMOOutlaws.sendActionMessage(pls.getPlayer(), ChatColor.GOLD + "You Joined the Cops");
+				MMOOutlaws.sendActionMessage(pls.getPlayer(), ChatColor.GOLD + Lang.joinSheriff);
 				pls.save();
 			}
 		});
-		this.addItem(new ItemHandler(8, "Skill Tree", new ArrayList<String>(), new ItemStack(Material.WRITTEN_BOOK), true){
+		this.addItem(new ItemHandler(8, Lang.skillTree, new ArrayList<String>(), new ItemStack(Material.WRITTEN_BOOK), true){
 			@Override
 			public void onClick(InventoryClickEvent e, IconMenu ic){
 				Bukkit.getScheduler().runTaskLater(Refrence.main, new Runnable(){

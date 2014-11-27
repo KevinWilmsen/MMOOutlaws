@@ -55,15 +55,7 @@ public class GameWorld implements Runnable{
 						ret.add(mission);
 					}
 				}
-			}catch(Exception ex){
-				if(mission == null){
-					System.out.println("mission bug");
-				}else if(pls == null){
-					System.out.println("playerStats bug");
-				}else if(pls.getPlayer()== null){
-					System.out.println("player bug");
-				}
-			}
+			}catch(Exception ex){ }
 		}
 		return ret;
 	}

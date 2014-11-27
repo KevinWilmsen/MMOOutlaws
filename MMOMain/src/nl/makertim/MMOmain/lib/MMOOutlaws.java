@@ -60,7 +60,7 @@ public class MMOOutlaws{
 		}
 	}
 	
-	public static void sendActionMessage(Player pl, String message){
+	public static int sendActionMessage(Player pl, String message){
 		//1.8 only
 		int protocol = -1;
 		try{
@@ -73,6 +73,7 @@ public class MMOOutlaws{
 			System.out.println("THERE WAS AN ERROR - PLAYER " + pl.getName() + " PROTOCOL " + protocol);
 			ex.printStackTrace();
 		}
+		return protocol;
 	}
 	
 	public static boolean isAdmin(Player pl){

@@ -14,6 +14,7 @@ public class PlayerStats{
 	public PlayerUUID pl;
 	public SkillTree theTree = new SkillTree();
 	public double xp = 0, won = 0, rounds = 0;
+	public static final short maxLevel = 50;
 	public int money = 100;
 	public boolean isInMission = false, isOutlaw = false;
 	
@@ -50,15 +51,15 @@ public class PlayerStats{
 			MMOScoreBoard score = getScoreBoard();
 			score.addPlayer(this.getPlayer());
 			score.setStatistics(new String[]{
-					ChatColor.RED.toString() + ChatColor.BOLD + "Wanted Level",
+					ChatColor.RED.toString() + ChatColor.BOLD + Lang.wantedLevel,
 					"★☆☆☆☆",
 					"",
-					ChatColor.GOLD.toString() + ChatColor.BOLD + "Money",
-					"€ " + money,
+					ChatColor.GOLD.toString() + ChatColor.BOLD + Lang.money,
+					Lang.moneyChar + " " + money,
 					" ",
-					ChatColor.GREEN.toString() + ChatColor.BOLD + "Status",
-					(isOutlaw ? "Outlaw" : "Sherrif") + " Level " + this.theTree.getTotalLVL(),
-					"XP " + Math.round(xpProcent()*10)/10 + "%",
+					ChatColor.GREEN.toString() + ChatColor.BOLD + Lang.status,
+					(isOutlaw ? Lang.outlaw : Lang.sheriff) + " " + Lang.level + " " + this.theTree.getTotalLVL(),
+					Lang.xp + " " + Math.round(xpProcent()*10)/10 + "%",
 					
 			}).setTitle(pl.playerName);
 		}catch(Exception ex){}

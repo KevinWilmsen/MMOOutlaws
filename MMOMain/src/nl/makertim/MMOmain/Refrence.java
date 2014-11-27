@@ -51,25 +51,17 @@ public class Refrence{
 		return ret;
 	}
 	
-	public static ItemStack slot0 = customIS(Material.STONE_SWORD, 1, null, null, new Enchantment[]{Enchantment.ARROW_INFINITE, Enchantment.DURABILITY});
+	public static ItemStack slot0 = customIS(Material.STONE_SWORD, 1, null, null, new Enchantment[]{Enchantment.DURABILITY});
 	public static ItemStack slot1 = customIS(Material.BOW, 1, null, null, new Enchantment[]{Enchantment.ARROW_INFINITE, Enchantment.DURABILITY});
 	public static ItemStack slot2 = customIS(Material.AIR, 1, null, null, null);
 	public static ItemStack slot3 = customIS(Material.AIR, 1, null, null, null);
 	public static ItemStack slot4 = customIS(Material.AIR, 1, null, null, null);
 	public static ItemStack slot5 = customIS(Material.AIR, 1, null, null, null);
 	public static ItemStack slot6 = customIS(Material.AIR, 1, null, null, null);
-	public static ItemStack slot7 = customIS(Material.NETHER_STAR, 1, "Main Menu", new String[]{"Right Click to open"}, null);
-	public static ItemStack slot8 = customIS(Material.COMPASS, 1, ChatColor.DARK_RED + "No missions near", null, null);
-	public static ItemStack slot8s = customIS(Material.COMPASS, 1, ChatColor.AQUA + "Mission Menu", null, new Enchantment[]{Enchantment.ARROW_INFINITE});
-	public static ItemStack slot8S = customIS(Material.COMPASS, 1, ChatColor.DARK_GREEN + "Mission Menu", null, new Enchantment[]{Enchantment.ARROW_INFINITE});
-	public static ItemStack slot8i = customIS(Material.COMPASS, 1, ChatColor.GREEN + "Lobby", null, new Enchantment[]{Enchantment.ARROW_INFINITE});
-	
-	public static String preFixWARNING = String.format("%s[Warning] %s", ChatColor.RED.toString(), ChatColor.RESET.toString());
-	public static String skillTreeMainMenuTitle = String.format("%s%sMain Skill Tree",  ChatColor.DARK_GRAY.toString(), ChatColor.BOLD.toString());
-	public static String skillTreeMovementMenuTitle = ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "Movement Skill Tree";
-	public static String skillTreeCombatMenuTitle = ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "Combat Skill Tree";
-	public static String skillTreeStealthMenuTitle = ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "Stealth Skill Tree";
-	public static String skillTreeUtilityMenuTitle = ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "Utitlty Skill Tree";
+	public static ItemStack slot7 = customIS(Material.NETHER_STAR, 1, Lang.itemMenu, new String[]{Lang.descOpen}, null);
+	public static ItemStack slot8 = customIS(Material.COMPASS, 1, ChatColor.DARK_RED + Lang.itemNoMission, null, null);
+	public static ItemStack slot8S = customIS(Material.COMPASS, 1, ChatColor.DARK_GREEN + Lang.itemMission, null, new Enchantment[]{Enchantment.ARROW_INFINITE});
+	public static ItemStack slot8i = customIS(Material.COMPASS, 1, ChatColor.GREEN + Lang.itemLobby, null, new Enchantment[]{Enchantment.ARROW_INFINITE});
 	
 	public static ItemStack customIS(Material mat, int amount, String name, String[] lore, Enchantment[] enchants){
 		ItemStack is = new ItemStack(mat, amount);

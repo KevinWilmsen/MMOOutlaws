@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.util.org.apache.commons.lang3.StringUtils;
+import nl.makertim.MMOmain.Lang;
 import nl.makertim.MMOmain.MKTEventHandler;
 import nl.makertim.MMOmain.PlayerStats;
 import nl.makertim.MMOmain.GameWorld;
@@ -62,7 +63,7 @@ public abstract class Mission implements Listener{
 	}
 	
 	public String getName(){
-		return "No Mission Name";
+		return Lang.missionNotNamed;
 	}
 	
 	public boolean inLobby(){
@@ -159,23 +160,23 @@ public abstract class Mission implements Listener{
 		for(Player pl : getAllPlayers()){
 			PlayerStats pls = PlayerStats.getPlayerStats(pl);
 			ArrayList<String> score = new ArrayList<String>();
-			score.add(ChatColor.RED.toString() + ChatColor.BOLD + "Outlaws"); 
+			score.add(ChatColor.RED.toString() + ChatColor.BOLD + Lang.outlaws); 
 			for(Player outlaw : teamA){
 				score.add(outlaw.getName());
 			}
 			for(int j=0; j<minPlayers-teamA.size(); j++){
-				score.add("Empty" + StringUtils.repeat(" ", j));
+				score.add(Lang.empty + StringUtils.repeat(" ", j));
 			}
 			score.add(" ");
-			score.add(ChatColor.BLUE.toString() + ChatColor.BOLD +"Sherrifs");
+			score.add(ChatColor.BLUE.toString() + ChatColor.BOLD + Lang.sheriffs);
 			for(Player popo : teamB){
 				score.add(popo.getName());
 			}
 			for(int j=0; j<minPlayers-teamB.size(); j++){
-				score.add("Empty" + StringUtils.repeat(" ", minPlayers+j));
+				score.add(Lang.empty + StringUtils.repeat(" ", minPlayers+j));
 			}
 			score.add("  ");
-			score.add(ChatColor.GREEN.toString() + ChatColor.BOLD + "Time " + ChatColor.RESET + Integer.toString(timer));
+			score.add(ChatColor.GREEN.toString() + ChatColor.BOLD + Lang.time + " " + ChatColor.RESET + Integer.toString(timer));
 			pls.getScoreBoard().setStatistics(score.toArray(new String[score.size()])).setTitle(ChatColor.GOLD + ChatColor.GOLD.toString() + this.getName());
 		}
 	}

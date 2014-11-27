@@ -6,7 +6,7 @@ public class Skill{
 	public int skillCosts = 0;
 	public String name = "";
 	public String[] description = new String[0];
-	public static final Skill commingSoon = new Skill(-1, 0.0, "Comming Soon™", "™");
+	public static final Skill commingSoon = new Skill(-1, 0.0, Lang.soon + Lang.tm, Lang.tm);
 		
 	public Skill(int costs, double index, String name, String desc){
 		this.skillIndex = index;

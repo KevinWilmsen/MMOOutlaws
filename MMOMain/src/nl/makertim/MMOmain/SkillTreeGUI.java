@@ -124,7 +124,7 @@ public class SkillTreeGUI extends IconMenu{
 						"", 
 						ChatColor.GREEN + Lang.availableLevels + " : " + pls.theTree.getAvalibleLVL(),
 						ChatColor.GOLD + Lang.totalLevels + " : " + pls.theTree.getTotalLVL(),
-						ChatColor.YELLOW + Lang.maxLevels + " : 50"}), 
+						ChatColor.YELLOW + Lang.maxLevels + " : " + PlayerStats.maxLevel}), 
 				new ItemStack(Material.EMERALD, pls.theTree.getAvalibleLVL()<0?1:pls.theTree.getAvalibleLVL())
 				)
 		);
@@ -241,7 +241,7 @@ public class SkillTreeGUI extends IconMenu{
 			}
 			boolean hasSkill = mySkill.hasSkill(skill);
 			boolean nextSkill = mySkill.nextSkill(skill);
-			String title = hasSkill?"Got it":nextSkill?Lang.skillNext:Lang.skillLocked;
+			String title = hasSkill?Lang.gotIt:nextSkill?Lang.skillNext:Lang.skillLocked;
 			short extra = (short)(hasSkill?13:nextSkill?1:7);
 			ItemMeta im = is.getItemMeta();
 			im.setDisplayName(title);
@@ -272,13 +272,13 @@ public class SkillTreeGUI extends IconMenu{
 				}.geefMee(ic), 1L);
 				break;
 			case 2:
-				thePlayer.getPlayer().sendMessage("Your skill level is not high enough for this skill");
+				thePlayer.getPlayer().sendMessage(Lang.skillLow);
 				break;
 			case 3:
-				thePlayer.getPlayer().sendMessage("Already unlocked this skill");
+				thePlayer.getPlayer().sendMessage(Lang.skillAlready);
 				break;
 			default:
-				thePlayer.getPlayer().sendMessage("You cant buy this item");
+				thePlayer.getPlayer().sendMessage(Lang.skillBug);
 				break;
 			}
 			

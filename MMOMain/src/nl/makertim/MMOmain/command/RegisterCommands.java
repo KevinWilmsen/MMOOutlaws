@@ -1,5 +1,6 @@
 package nl.makertim.MMOmain.command;
 
+import nl.makertim.MMOmain.Lang;
 import nl.makertim.MMOmain.MKTEventHandler;
 import nl.makertim.MMOmain.PlayerStats;
 import nl.makertim.MMOmain.Refrence;
@@ -12,13 +13,14 @@ import org.bukkit.entity.Player;
 public class RegisterCommands{
 	
 	public RegisterCommands(){
-		registerCommand(new Command("Test"){
+		registerCommand(new Command(Lang.commandTest){
 			@Override
-			public void onCommand(Player sender, String command, String[] args) {
+			public void onCommand(Player sender, String command, String[] args){
+				sender.sendMessage("No Test Found Exception");
 				PlayerStats.getPlayerStats(sender).getScoreBoard().setTeam(Refrence.random.nextBoolean(), sender);
 			}
 		});
-		registerCommand(new Command("ReJoin"){
+		registerCommand(new Command(Lang.commandInv){
 			@Override
 			public void onCommand(Player sender, String command, String[] args) {
 				if(MMOOutlaws.isAdmin(sender) && Mission.getMissionFromPlayer(sender)==null){
@@ -27,7 +29,7 @@ public class RegisterCommands{
 				}
 			}
 		});
-		registerCommand(new Command("ReStats"){
+		registerCommand(new Command(Lang.commandStats){
 			@Override
 			public void onCommand(Player sender, String command, String[] args) {
 				if(MMOOutlaws.isAdmin(sender)){
@@ -38,13 +40,13 @@ public class RegisterCommands{
 				}
 			}
 		});
-		registerCommand(new Command("ReScore"){
+		registerCommand(new Command(Lang.commandBoard){
 			@Override
 			public void onCommand(Player sender, String command, String[] args) {
 				PlayerStats.getPlayerStats(sender).resetScoreBoard();
 			}
 		});
-		registerCommand(new Command("ReMission"){
+		registerCommand(new Command(Lang.commandMission){
 			@Override
 			public void onCommand(Player sender, String command, String[] args) {
 				Mission ms = GameWorld.getGameWorld().getMissionPlayer(sender);
@@ -53,16 +55,15 @@ public class RegisterCommands{
 				}
 			}
 		});
-		registerCommand(new Command("PlayerStats"){
+		registerCommand(new Command(Lang.commandPLStats){
 			@Override
 			public void onCommand(Player sender, String command, String[] args) {
 				if(MMOOutlaws.isAdmin(sender)){
 					sender.sendMessage(PlayerStats.getPlayerStats(sender).toString());
-					MKTEventHandler.cleanupPlayerInventory(sender);
 				}
 			}
 		});
-		registerCommand(new Command("LevelUp"){
+		registerCommand(new Command(Lang.commandLVL){
 			@Override
 			public void onCommand(Player sender, String command, String[] args){
 				if(MMOOutlaws.isAdmin(sender)){
@@ -73,7 +74,7 @@ public class RegisterCommands{
 				}
 			}
 		});
-		registerCommand(new Command("MMOVersion"){
+		registerCommand(new Command(Lang.commandVersion){
 			@Override
 			public void onCommand(Player sender, String command, String[] args){
 				sender.sendMessage("Name    - " + Refrence.main.getName());
