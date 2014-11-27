@@ -6,10 +6,10 @@ public class SkillTree{
 	private int totalLevel = 1;
 	private int availableLevels = 1;
 	
-	public Movement myMovementLevel 	= Movement.none;
-	public Combat myComatLevel 			= Combat.none;
-	public Stealth myStealthLevel 		= Stealth.none;
-	public Utility myUtilityLevel 		= Utility.none;
+	public Movement myMovementLevel 	= Movement.NONE;
+	public Combat myComatLevel 			= Combat.NONE;
+	public Stealth myStealthLevel 		= Stealth.NONE;
+	public Utility myUtilityLevel 		= Utility.NONE;
 	
 	public void addLevel(){
 		if(totalLevel < 50){
@@ -19,18 +19,18 @@ public class SkillTree{
 	}
 	
 	public void reset(){
-		this.myMovementLevel = Movement.none;
-		this.myComatLevel = Combat.none;
-		this.myStealthLevel = Stealth.none;
-		this.myUtilityLevel = Utility.none;
+		this.myMovementLevel = Movement.NONE;
+		this.myComatLevel = Combat.NONE;
+		this.myStealthLevel = Stealth.NONE;
+		this.myUtilityLevel = Utility.NONE;
 		this.availableLevels = this.totalLevel;
 	}
 	
 	public void Reset(){
-		this.myMovementLevel = Movement.none;
-		this.myComatLevel = Combat.none;
-		this.myStealthLevel = Stealth.none;
-		this.myUtilityLevel = Utility.none;
+		this.myMovementLevel = Movement.NONE;
+		this.myComatLevel = Combat.NONE;
+		this.myStealthLevel = Stealth.NONE;
+		this.myUtilityLevel = Utility.NONE;
 		this.availableLevels = this.totalLevel;
 		totalLevel = 1;
 		availableLevels = 1;

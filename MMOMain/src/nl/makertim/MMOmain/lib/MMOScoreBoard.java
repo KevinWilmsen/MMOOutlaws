@@ -39,7 +39,9 @@ public class MMOScoreBoard{
 	
 	public MMOScoreBoard setStatistics(String[] names){
 		if(names == null){
-			throw new IllegalArgumentException();
+			for(String str : oldArray){
+				theBoard.resetScores(str);
+			}
 		}
 		if(oldArray != null){
 			if(names.length == oldArray.length){

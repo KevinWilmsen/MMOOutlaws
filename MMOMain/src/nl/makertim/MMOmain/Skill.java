@@ -6,7 +6,7 @@ public class Skill{
 	public int skillCosts = 0;
 	public String name = "";
 	public String[] description = new String[0];
-	public static final Skill commingSoon = new Skill(-1, 0.0, Lang.soon + Lang.tm, Lang.tm);
+	public static final Skill COMMING_SOON = new Skill(-1, 0.0, Lang.soon + Lang.tm, Lang.tm);
 		
 	public Skill(int costs, double index, String name, String desc){
 		this.skillIndex = index;
@@ -42,13 +42,13 @@ public class Skill{
 	
 	
 	public static class Movement extends Skill{
- 		public static final Movement none 				= new Movement(0, 0.0, "none", null);
- 		public static final Movement hayNodamage 		= new Movement(1, 1.0, "Leap of faith", "Can fall on top of haybales without getting damage");
- 		public static final Movement zipLine 			= new Movement(2, 2.0, "Zipline", "Can use ziplines with right-click");
- 		public static final Movement crouchNodamage 	= new Movement(3, 3.0, "Do a barrel roll", "Crouch while falling to roll and reduce damage");
- 		public static final Movement noPackageDelay 	= new Movement(4, 4.0, "Smooth criminal", "Can carry packages without having to lose speed");
- 		public static final Movement deathFromAbove 	= new Movement(5, 5.0, "Death from above", "Jump on top of an enemy with a sword to get in some bonus damage!");
- 		public static final Movement hangglider 		= new Movement(6, 6.0, "Hangglider", "Can use the hangglider");
+ 		public static final Movement NONE 				= new Movement(0, 0.0, "none", null);
+ 		public static final Movement HAY_NO_DAMMAGE 	= new Movement(1, 1.0, "Leap of faith", "Can fall on top of haybales without getting damage");
+ 		public static final Movement ZIP_LINE 			= new Movement(2, 2.0, "Zipline", "Can use ziplines with right-click");
+ 		public static final Movement CROUCH_NO_DAMMAGE 	= new Movement(3, 3.0, "Do a barrel roll", "Crouch while falling to roll and reduce damage");
+ 		public static final Movement NO_PACKAGE_DELAY 	= new Movement(4, 4.0, "Smooth criminal", "Can carry packages without having to lose speed");
+ 		public static final Movement DEATH_FROM_ABOVE	= new Movement(5, 5.0, "Death from above", "Jump on top of an enemy with a sword to get in some bonus damage!");
+ 		public static final Movement HANGGLIDER 		= new Movement(6, 6.0, "Hangglider", "Can use the hangglider");
 		
 		public Movement(int costs, double index, String name, String desc){
 			super(costs, index, name, desc);
@@ -57,31 +57,31 @@ public class Skill{
 		public static Movement getEnum(int index){
 			switch(index){
 			case 1:
-				return hayNodamage;
+				return HAY_NO_DAMMAGE;
 			case 2:
-				return zipLine;
+				return ZIP_LINE;
 			case 3:
-				return crouchNodamage;
+				return CROUCH_NO_DAMMAGE;
 			case 4:
-				return noPackageDelay;
+				return NO_PACKAGE_DELAY;
 			case 5:
-				return deathFromAbove;
+				return DEATH_FROM_ABOVE;
 			case 6:
-				return hangglider;
+				return HANGGLIDER;
 			default:
-				return none;
+				return NONE;
 			}
 		}
 	}
 	
 	public static class Combat extends Skill{
- 		public static final Combat none 				= new Combat(0, 0.0, "none", null);
- 		public static final Combat zoom 				= new Combat(1, 1.0, "No scope", "Crouch with a ranged weapon in your hand to toggle zoom");
- 		public static final Combat betterBlocking 		= new Combat(2, 2.0, "Blocking", "Block with your sword to reduce incomming damage by X ammount");
- 		public static final Combat moreAmmo 			= new Combat(3, 3.0, "Big pockets", "Can carry 50% more ammunition for every type of weapon");
- 		public static final Combat noSlowWapon 			= new Combat(4, 4.0, "Heavy lifter", "Can carry weapons in hand without having to lose speed");
- 		public static final Combat rangedComat 			= new Combat(5, 5.0, "Sharpshooter", "Melee attacks with ranged weapons are now a bit stronger");
- 		public static final Combat secondGear 			= new Combat(6, 6.0, "2nd Hand", "Can equip a 2nd ranged weapon");
+ 		public static final Combat NONE 				= new Combat(0, 0.0, "none", null);
+ 		public static final Combat ZOOM 				= new Combat(1, 1.0, "No scope", "Crouch with a ranged weapon in your hand to toggle zoom");
+ 		public static final Combat BETTER_BLOCKING 		= new Combat(2, 2.0, "Blocking", "Block with your sword to reduce incomming damage by X ammount");
+ 		public static final Combat MORE_AMMO 			= new Combat(3, 3.0, "Big pockets", "Can carry 50% more ammunition for every type of weapon");
+ 		public static final Combat NO_SLOW_WAPON 		= new Combat(4, 4.0, "Heavy lifter", "Can carry weapons in hand without having to lose speed");
+ 		public static final Combat RANGED_COMBAT 		= new Combat(5, 5.0, "Sharpshooter", "Melee attacks with ranged weapons are now a bit stronger");
+ 		public static final Combat SECOND_GEAR 			= new Combat(6, 6.0, "2nd Hand", "Can equip a 2nd ranged weapon");
 		
 		public Combat(int costs, double index, String name, String desc){
 			super(costs, index, name, desc);
@@ -90,31 +90,31 @@ public class Skill{
 		public static Combat getEnum(int index){
 			switch(index){
 			case 1:
-				return zoom;
+				return ZOOM;
 			case 2: 
-				return betterBlocking;
+				return BETTER_BLOCKING;
 			case 3:
-				return moreAmmo;
+				return MORE_AMMO;
 			case 4:
-				return noSlowWapon;
+				return NO_SLOW_WAPON;
 			case 5:
-				return rangedComat;
+				return RANGED_COMBAT;
 			case 6:
-				return secondGear;
+				return SECOND_GEAR;
 			default:
-				return none;
+				return NONE;
 			}
 		}
 	}
 	
 	public static class Stealth extends Skill{
- 		public static final Stealth none 				= new Stealth(0, 0.0, "none", null);
- 		public static final Stealth batBom 				= new Stealth(1, 1.0, "Batbomb", "Use this bomb to disapear in a swarm of bats.");
- 		public static final Stealth backSlash 			= new Stealth(2, 2.0, "Backstab", "Backstabing with melee now does more damage.");
- 		public static final Stealth ironDoor 			= new Stealth(3, 3.0, "Lockpicking", "You can now lockpick iron doors.");
- 		public static final Stealth noPotion 			= new Stealth(4, 4.0, "Poison immunity", "You are not immune for poison effects.");
- 		public static final Stealth flameArrow 			= new Stealth(5, 5.0, "Infinity", "75% to recover an arrow when it hits a target.");
- 		public static final Stealth noSight 			= new Stealth(6, 6.0, "Ghost", "Sneaking in tall bushes or dark places will now make you invisibile.");
+ 		public static final Stealth NONE 				= new Stealth(0, 0.0, "none", null);
+ 		public static final Stealth BAT_BOM 			= new Stealth(1, 1.0, "Batbomb", "Use this bomb to disapear in a swarm of bats.");
+ 		public static final Stealth BACK_SLASH 			= new Stealth(2, 2.0, "Backstab", "Backstabing with melee now does more damage.");
+ 		public static final Stealth IRON_DOOR 			= new Stealth(3, 3.0, "Lockpicking", "You can now lockpick iron doors.");
+ 		public static final Stealth NO_POTION 			= new Stealth(4, 4.0, "Poison immunity", "You are not immune for poison effects.");
+ 		public static final Stealth FLAME_ARROW 		= new Stealth(5, 5.0, "Infinity", "75% to recover an arrow when it hits a target.");
+ 		public static final Stealth NO_SIGHT 			= new Stealth(6, 6.0, "Ghost", "Sneaking in tall bushes or dark places will now make you invisibile.");
 		
 		public Stealth(int costs, double index, String name, String desc){
 			super(costs, index, name, desc);
@@ -123,31 +123,31 @@ public class Skill{
 		public static Stealth getEnum(int index){
 			switch(index){
 			case 1:
-				return batBom;
+				return BAT_BOM;
 			case 2: 
-				return backSlash;
+				return BACK_SLASH;
 			case 3:
-				return ironDoor;
+				return IRON_DOOR;
 			case 4:
-				return noPotion;
+				return NO_POTION;
 			case 5:
-				return flameArrow;
+				return FLAME_ARROW;
 			case 6:
-				return noSight;
+				return NO_SIGHT;
 			default:
-				return none;
+				return NONE;
 			}
 		}
 	}
 	
 	public static class Utility extends Skill{
- 		public static final Utility none 				= new Utility(0, 0.0, "none", null);
- 		public static final Utility noMistakes		 	= new Utility(1, 1.0, "Tough guy", "You don't receive damage by your own utility's.");
+ 		public static final Utility NONE 				= new Utility(0, 0.0, "none", null);
+ 		public static final Utility NO_MISTAKES		 	= new Utility(1, 1.0, "Tough guy", "You don't receive damage by your own utility's.");
  		public static final Utility BOOM				= new Utility(2, 2.0, "BOOM", "Your TNT will now break open special walls.");
- 		public static final Utility horseEverywhere 	= new Utility(3, 3.0, "Horse with no name", "Allows you to summon your horse anywhere.");
- 		public static final Utility throwAway			= new Utility(4, 4.0, "Double trouble", "Can carry twice as much utility's.");
- 		public static final Utility fireBuff 			= new Utility(5, 5.0, "Flame", "Summon a utility which allows you, and your party members, to gain a temporary flame enchantment.");
- 		public static final Utility secondSlot 			= new Utility(6, 6.0, "Double the fun", "Can equip a 2nd utility.");
+ 		public static final Utility HORSE_EVERYWHERE 	= new Utility(3, 3.0, "Horse with no name", "Allows you to summon your horse anywhere.");
+ 		public static final Utility THROW_AWAY			= new Utility(4, 4.0, "Double trouble", "Can carry twice as much utility's.");
+ 		public static final Utility FIRE_BUFF 			= new Utility(5, 5.0, "Flame", "Summon a utility which allows you, and your party members, to gain a temporary flame enchantment.");
+ 		public static final Utility SECOND_SLOT 		= new Utility(6, 6.0, "Double the fun", "Can equip a 2nd utility.");
 		 
 		public Utility(int costs, double index, String name, String desc){
 			super(costs, index, name, desc);
@@ -156,19 +156,19 @@ public class Skill{
 		public static Utility getEnum(int index){
 			switch(index){
 			case 1:
-				return noMistakes;
+				return NO_MISTAKES;
 			case 2: 
 				return BOOM;
 			case 3:
-				return horseEverywhere;
+				return HORSE_EVERYWHERE;
 			case 4:
-				return throwAway;
+				return THROW_AWAY;
 			case 5:
-				return fireBuff;
+				return FIRE_BUFF;
 			case 6:
-				return secondSlot;
+				return SECOND_SLOT;
 			default:
-				return none;
+				return NONE;
 			}
 		}
 	}

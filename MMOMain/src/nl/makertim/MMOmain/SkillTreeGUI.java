@@ -75,10 +75,10 @@ public class SkillTreeGUI extends IconMenu{
 	private void Movement(){
 		for(int i=0; i<7; i++){
 			Movement skill = Movement.getEnum(i);
-			if(skill != Movement.none){
+			if(skill != Movement.NONE){
 				this.addItem(new SkillItemHandler(9+i, skill, pls));
 			}else{
-				this.addItem(new SkillItemHandler(9+i, Skill.commingSoon, pls));
+				this.addItem(new SkillItemHandler(9+i, Skill.COMMING_SOON, pls));
 			}
 		}
 	}
@@ -86,10 +86,10 @@ public class SkillTreeGUI extends IconMenu{
 	private void Combat(){
 		for(int i=0; i<7; i++){
 			Combat skill = Combat.getEnum(i);
-			if(skill != Combat.none){
+			if(skill != Combat.NONE){
 				this.addItem(new SkillItemHandler(18+i, skill, pls));
 			}else{
-				this.addItem(new SkillItemHandler(18+i, Skill.commingSoon, pls));
+				this.addItem(new SkillItemHandler(18+i, Skill.COMMING_SOON, pls));
 			}
 		}
 	}
@@ -97,10 +97,10 @@ public class SkillTreeGUI extends IconMenu{
 	private void Stealth(){
 		for(int i=0; i<7; i++){
 			Stealth skill = Stealth.getEnum(i);
-			if(skill != Stealth.none){
+			if(skill != Stealth.NONE){
 				this.addItem(new SkillItemHandler(27+i, skill, pls));
 			}else{
-				this.addItem(new SkillItemHandler(27+i, Skill.commingSoon, pls));
+				this.addItem(new SkillItemHandler(27+i, Skill.COMMING_SOON, pls));
 			}
 		}
 	}
@@ -108,10 +108,10 @@ public class SkillTreeGUI extends IconMenu{
 	private void Utility(){
 		for(int i=0; i<7; i++){
 			Utility skill = Utility.getEnum(i);
-			if(skill != Utility.none){
+			if(skill != Utility.NONE){
 				this.addItem(new SkillItemHandler(36+i, skill, pls));
 			}else{
-				this.addItem(new SkillItemHandler(36+i, Skill.commingSoon, pls));
+				this.addItem(new SkillItemHandler(36+i, Skill.COMMING_SOON, pls));
 			}
 		}
 	}

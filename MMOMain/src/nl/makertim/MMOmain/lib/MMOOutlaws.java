@@ -52,7 +52,7 @@ public class MMOOutlaws{
 		}
 	}
 	
-	public void addSkillHandler(Class<? extends SkillHandler> skillHandler){
+	public void addSkillHandler(Class<? extends SkillAction> skillHandler){
 		try{
 			Refrence.handlers.add(skillHandler.newInstance());
 		}catch(Exception e){
