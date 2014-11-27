@@ -57,12 +57,12 @@ public class MKTEventHandler implements Listener{
 				@Override
 				public void run(){
 					MKTEventHandler.cleanupPlayerInventory(pl);
+					for(PotionEffect effect : pl.getActivePotionEffects()){
+						pl.removePotionEffect(effect.getType());
+					}
 				}
 			}.setPlayer(e.getPlayer()), 10);
-		}
-		for(PotionEffect effect : e.getPlayer().getActivePotionEffects()){
-			e.getPlayer().removePotionEffect(effect.getType());
-		}
+		}		
 		for(Mission mission : GameWorld.getGameWorld().missions){
 			mission.updateServerJoinEvent(e.getPlayer());
 		}
