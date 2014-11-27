@@ -42,6 +42,20 @@ public class SkillTree{
 		}
 	}
 	
+	public boolean gotSkill(Skill check){
+		if(check instanceof Movement){
+			return myMovementLevel.hasSkill(check);
+		}else if(check instanceof Combat){
+			return myComatLevel.hasSkill(check);
+		}else if(check instanceof Stealth){
+			return myUtilityLevel.hasSkill(check);
+		}else if(check instanceof Utility){
+			return myUtilityLevel.hasSkill(check);
+		}else{
+			return false;
+		}
+	}
+	
 	public int getAvalibleLVL(){
 		return availableLevels;
 	}

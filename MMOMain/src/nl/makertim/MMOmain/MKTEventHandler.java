@@ -8,7 +8,6 @@ import nl.makertim.MMOmain.lib.Mission;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,7 +23,6 @@ import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 public class MKTEventHandler implements Listener{
 	
@@ -115,23 +113,9 @@ public class MKTEventHandler implements Listener{
 	
 	@EventHandler
 	public void onPlayerDammage(EntityDamageEvent e){
-		if(e.getCause().equals(DamageCause.FALL) || e.getCause().equals(DamageCause.FALLING_BLOCK)){
-			Block a = e.getEntity().getLocation().add(0, -1, 0).getBlock();
-			Block b = e.getEntity().getLocation().add(0, -2, 0).getBlock();
-			if(a.getType().equals(Material.HAY_BLOCK) || b.getType().equals(Material.HAY_BLOCK)){
-				e.setDamage(0D);
-			}else{
-				if(e.getEntity() instanceof Player){
-					Player pl = (Player)e.getEntity();
-					if(pl.isSneaking()){
-						pl.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Refrence.random.nextInt((int)(e.getDamage()*40+1)), 0, false));
-						e.setDamage(e.getDamage() /2);
-					}
-				}
-			}
-		}else if(  e.getEntity() instanceof Player 
-				&& (e.getCause().equals(DamageCause.ENTITY_ATTACK) || e.getCause().equals(DamageCause.PROJECTILE)) 
-				&& !PlayerStats.getPlayerStats((Player)e.getEntity()).isInMission){
+		if(      e.getEntity() instanceof Player && 
+				(e.getCause().equals(DamageCause.ENTITY_ATTACK) || e.getCause().equals(DamageCause.PROJECTILE)) && 
+				 !PlayerStats.getPlayerStats((Player)e.getEntity()).isInMission){
 			e.setCancelled(true);
 		}
 	}
@@ -175,5 +159,6 @@ public class MKTEventHandler implements Listener{
 		inv.setItem(7, Refrence.slot7);
 		inv.setItem(8, Refrence.slot8);
 		inv.setItem(9, Refrence.customIS(Material.ARROW, 16, "IBullets", null, null));
+		//TODO utilty
 	}
 }

@@ -3,6 +3,7 @@ package nl.makertim.MMOmain.lib;
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
@@ -54,7 +55,9 @@ public class MMOOutlaws{
 	
 	public void addSkillHandler(Class<? extends SkillAction> skillHandler){
 		try{
-			Refrence.handlers.add(skillHandler.newInstance());
+			SkillAction sa = skillHandler.newInstance();
+			sa.registerEvents(Bukkit.getPluginManager(), Refrence.main);
+			Refrence.handlers.add(sa);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

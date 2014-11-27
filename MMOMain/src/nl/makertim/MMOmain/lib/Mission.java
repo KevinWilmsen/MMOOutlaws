@@ -82,6 +82,11 @@ public abstract class Mission implements Listener{
 			teamB.add(pl);
 		}
 		showMissionPeople();
+		if(pls.isOutlaw){
+			pls.getPlayer().getInventory().setHelmet(Refrence.customIS(Material.JACK_O_LANTERN, 1, "Outlaw Helmet", null, null));
+		}else{
+			pls.getPlayer().getInventory().setHelmet(Refrence.customIS(Material.PUMPKIN, 1, "Police Helmet", null, null));
+		}
 	}
 	
 	public void leavePlayer(PlayerStats pls){
