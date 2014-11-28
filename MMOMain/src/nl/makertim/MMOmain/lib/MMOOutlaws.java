@@ -73,9 +73,11 @@ public class MMOOutlaws{
 			protocol = player.getHandle().playerConnection.networkManager.getVersion();
 			player.getHandle().playerConnection.sendPacket(new ProtocolInjector.PacketTitle(Action.TIMES, 5, 5, 5));
 			if(title != null){
+				title = TitleStringObject.convert(title);
 				player.getHandle().playerConnection.sendPacket(new ProtocolInjector.PacketTitle(Action.TITLE, ChatSerializer.a(title)));
 			}
 			if(subtitle != null){
+				subtitle = TitleStringObject.convert(subtitle);
 				player.getHandle().playerConnection.sendPacket(new ProtocolInjector.PacketTitle(Action.SUBTITLE, ChatSerializer.a(subtitle)));
 			}
 		}catch(Exception ex){
