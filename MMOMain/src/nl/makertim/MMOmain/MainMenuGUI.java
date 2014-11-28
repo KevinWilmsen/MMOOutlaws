@@ -3,12 +3,12 @@ package nl.makertim.MMOmain;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-import net.md_5.bungee.api.ChatColor;
 import nl.makertim.MMOmain.lib.IconMenu;
 import nl.makertim.MMOmain.lib.MMOOutlaws;
 
@@ -31,7 +31,7 @@ public class MainMenuGUI extends IconMenu{
 			public void onClick(InventoryClickEvent e, IconMenu ic){
 				PlayerStats pls = PlayerStats.getPlayerStats((Player)e.getWhoClicked());
 				pls.isOutlaw = false;
-				MMOOutlaws.sendActionMessage(pls.getPlayer(), ChatColor.GOLD + Lang.joinSheriff);
+				MMOOutlaws.sendActionMessage(pls.getPlayer(), " " + Lang.joinSheriff);
 				pls.save();
 			}
 		});

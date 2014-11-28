@@ -3,7 +3,6 @@ package nl.makertim.MMOmain.lib;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.util.org.apache.commons.lang3.StringUtils;
 import nl.makertim.MMOmain.Lang;
 import nl.makertim.MMOmain.MKTEventHandler;
 import nl.makertim.MMOmain.PlayerStats;
@@ -140,7 +139,7 @@ public abstract class Mission implements Listener{
 			lst = teamB;
 		}
 		for(Player pl : lst){
-			MMOOutlaws.sendTitleMessage(pl, message, supTitle);
+			MMOOutlaws.sendTitleMessage(pl, message, supTitle, 35);
 		}
 	}
 	
@@ -183,7 +182,7 @@ public abstract class Mission implements Listener{
 				score.add(outlaw.getName());
 			}
 			for(int j=0; j<minPlayers-teamA.size(); j++){
-				score.add(Lang.empty + StringUtils.repeat(" ", j));
+				score.add(Lang.empty + StringUtil.repeat(" ", j));
 			}
 			score.add(" ");
 			score.add(ChatColor.BLUE.toString() + ChatColor.BOLD + Lang.sheriffs);
@@ -191,7 +190,7 @@ public abstract class Mission implements Listener{
 				score.add(popo.getName());
 			}
 			for(int j=0; j<minPlayers-teamB.size(); j++){
-				score.add(Lang.empty + StringUtils.repeat(" ", minPlayers+j));
+				score.add(Lang.empty + StringUtil.repeat(" ", minPlayers+j));
 			}
 			score.add("  ");
 			score.add(ChatColor.GREEN.toString() + ChatColor.BOLD + Lang.time + " " + ChatColor.RESET + Integer.toString(timer));

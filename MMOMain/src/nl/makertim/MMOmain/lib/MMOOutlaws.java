@@ -4,14 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
 import org.bukkit.entity.Player;
-import org.spigotmc.ProtocolInjector;
-import org.spigotmc.ProtocolInjector.PacketTitle.Action;
 
-import net.minecraft.server.v1_7_R4.ChatSerializer;
-import net.minecraft.server.v1_7_R4.IChatBaseComponent;
-import net.minecraft.server.v1_7_R4.PacketPlayOutChat;
 import nl.makertim.MMOmain.Refrence;
 import nl.makertim.MMOmain.GameWorld;
 
@@ -65,13 +59,12 @@ public class MMOOutlaws{
 		}
 	}
 	
-	public static int sendTitleMessage(Player pl, String title, String subtitle){
+	public static void sendTitleMessage(Player pl, String title, String subtitle, int duratio){
 		//1.8 only
-		int protocol = -1;
 		try{
-			CraftPlayer player = ((CraftPlayer)pl);
-			protocol = player.getHandle().playerConnection.networkManager.getVersion();
-			player.getHandle().playerConnection.sendPacket(new ProtocolInjector.PacketTitle(Action.TIMES, 5, 5, 5));
+			throw new Exception();
+			/*CraftPlayer player = ((CraftPlayer)pl);
+			player.getHandle().playerConnection.sendPacket(null);
 			if(title != null){
 				title = TitleStringObject.convert(title);
 				player.getHandle().playerConnection.sendPacket(new ProtocolInjector.PacketTitle(Action.TITLE, ChatSerializer.a(title)));
@@ -79,7 +72,7 @@ public class MMOOutlaws{
 			if(subtitle != null){
 				subtitle = TitleStringObject.convert(subtitle);
 				player.getHandle().playerConnection.sendPacket(new ProtocolInjector.PacketTitle(Action.SUBTITLE, ChatSerializer.a(subtitle)));
-			}
+			}*/
 		}catch(Exception ex){
 			if(title != null){
 				pl.sendMessage(title);
@@ -87,24 +80,21 @@ public class MMOOutlaws{
 			if(subtitle != null){
 				pl.sendMessage(subtitle);
 			}
-			System.out.println("THERE WAS AN TITLE ERROR - PLAYER " + pl.getName() + " PROTOCOL " + protocol);
-			ex.printStackTrace();
 		}
-		return protocol;
 	}
 	
 	public static int sendActionMessage(Player pl, String message){
 		//1.8 only
+		
 		int protocol = -1;
 		try{
+			throw new Exception();/*
 			protocol = ((CraftPlayer)pl).getHandle().playerConnection.networkManager.getVersion();
 			IChatBaseComponent icbc = ChatSerializer.a("{\"text\": \"" + message + "\"}");
 			PacketPlayOutChat ppoc = new PacketPlayOutChat(icbc, 2);
-			((CraftPlayer)pl).getHandle().playerConnection.sendPacket(ppoc);
+			((CraftPlayer)pl).getHandle().playerConnection.sendPacket(ppoc);*/
 		}catch(Exception ex){
 			pl.sendMessage(message);
-			System.out.println("THERE WAS AN MSG ERROR - PLAYER " + pl.getName() + " PROTOCOL " + protocol);
-			ex.printStackTrace();
 		}
 		return protocol;
 	}

@@ -3,6 +3,7 @@ package nl.makertim.MMOmain;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -11,7 +12,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import net.md_5.bungee.api.ChatColor;
 import nl.makertim.MMOmain.Skill.*;
 import nl.makertim.MMOmain.lib.IconMenu;
 
@@ -218,7 +218,7 @@ public class SkillTreeGUI extends IconMenu{
 							Lang.skillPoints.substring(0, Lang.skillPoints.length() - (skill.skillCosts>1?0:1)));
 			}else{
 				lst.add(0, "");
-				lst.add(1, ChatColor.DARK_GRAY + Lang.skillNotFirst);
+				lst.add(1, ChatColor.GRAY + Lang.skillNotFirst);
 			}
 			
 			return lst;
