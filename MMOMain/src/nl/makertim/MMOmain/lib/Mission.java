@@ -116,11 +116,6 @@ public abstract class Mission implements Listener{
 		pls.save();
 	}
 	
-	protected void sendMessage(String message){
-		sendMessage(true, message);
-		sendMessage(false, message);
-	}
-	
 	protected void sendMessage(Boolean isOutlaw, String message){
 		List<Player> lst;
 		if(isOutlaw == null){
@@ -132,6 +127,20 @@ public abstract class Mission implements Listener{
 		}
 		for(Player pl : lst){
 			MMOOutlaws.sendActionMessage(pl, ChatColor.GOLD + message);
+		}
+	}
+	
+	protected void sendTitle(Boolean isOutlaw, String message, String supTitle){
+		List<Player> lst;
+		if(isOutlaw == null){
+			lst = getAllPlayers();
+		}else if(isOutlaw){
+			lst = teamA;
+		}else{
+			lst = teamB;
+		}
+		for(Player pl : lst){
+			MMOOutlaws.sendTitleMessage(pl, message, supTitle);
 		}
 	}
 	
