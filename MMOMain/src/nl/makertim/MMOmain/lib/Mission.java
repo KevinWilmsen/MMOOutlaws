@@ -165,7 +165,7 @@ public abstract class Mission implements Listener{
 		timer = 0;
 	}
 	
-	public void tick(int i){ //TODO zet dit in title
+	public void tick(int i){
 		for(Player pl : getAllPlayers()){
 			PlayerStats pls = PlayerStats.getPlayerStats(pl);
 			ArrayList<String> score = new ArrayList<String>();
