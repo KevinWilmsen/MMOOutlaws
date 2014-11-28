@@ -11,8 +11,10 @@ import nl.makertim.MMOmain.GameWorld;
 import nl.makertim.MMOmain.Refrence;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
@@ -119,15 +121,17 @@ public abstract class Mission implements Listener{
 		sendMessage(false, message);
 	}
 	
-	protected void sendMessage(boolean isOutlaw, String message){
-		if(isOutlaw){
-			for(Player pl : this.teamA){
-				MMOOutlaws.sendActionMessage(pl, ChatColor.GOLD + message);
-			}
+	protected void sendMessage(Boolean isOutlaw, String message){
+		List<Player> lst;
+		if(isOutlaw == null){
+			lst = getAllPlayers();
+		}else if(isOutlaw){
+			lst = teamA;
 		}else{
-			for(Player pl : this.teamB){
-				MMOOutlaws.sendActionMessage(pl, ChatColor.GOLD + message);
-			}
+			lst = teamB;
+		}
+		for(Player pl : lst){
+			MMOOutlaws.sendActionMessage(pl, ChatColor.GOLD + message);
 		}
 	}
 	
@@ -189,6 +193,30 @@ public abstract class Mission implements Listener{
 	public void updateServerJoinEvent(Player pl){
 		for(Player ipl : getAllPlayers()){
 			ipl.hidePlayer(pl);
+		}
+	}
+	
+	public void keepLobby(Player pl, boolean outlaw){
+		if(!getLocation(outlaw).isInsideRange(pl.getLocation())){
+			for (int j = 0; j < 5; j++) {
+				pl.getWorld().playEffect(pl.getLocation(), Effect.ENDER_SIGNAL, j);
+			}
+			pl.playSound(pl.getLocation(), Sound.ENDERMAN_TELEPORT, 1F, 1F);
+			pl.teleport(getLocation(outlaw).getRandomLocation());
+		}
+	}
+	
+	public void setCompasTarget(Boolean b, Location loc){
+		List<Player> lst;
+		if(b == null){
+			lst = getAllPlayers();
+		}else if(b){
+			lst = teamA;
+		}else{
+			lst = teamB;
+		}
+		for(Player pl : lst){
+			pl.setCompassTarget(loc);
 		}
 	}
 }
